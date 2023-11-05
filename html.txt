@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Basic Calculator</title>
+<style>
+/* CSS styles */
+.calculator {
+width: 250px;
+margin: 0 auto;
+}
+
+input {
+width: 100%;
+text-align: right;
+font-size: 20px;
+}
+
+table {
+width: 100%;
+border-collapse: collapse;
+}
+
+td {
+width: 25%;
+text-align: center;
+padding: 10px;
+}
+
+button {
+width: 100%;
+height: 100%;
+font-size: 20px;
+cursor: pointer;
+}
+
+.number {
+background-color: #eee;
+}
+
+.operator {
+background-color: #ccc;
+}
+
+.equal {
+background-color: #000;
+color: #fff;
+}
+
+.clear {
+background-color: #f00;
+color: #fff;
+}
+
+</style>
+</head>
+<body>
+<div class="calculator">
+<input type="text" id="result" value="">
+<table>
+<tr>
+<td><button type="button" class="number" data-value="7">7</button></td>
+<td><button type="button" class="number" data-value="8">8</button></td>
+<td><button type="button" class="number" data-value="9">9</button></td>
+<td><button type="button" class="operator" data-value="+">+</button></td>
+</tr>
+<tr>
+<td><button type="button" class="number" data-value="4">4</button></td>
+<td><button type="button" class="number" data-value="5">5</button></td>
+<td><button type="button" class="number" data-value="6">6</button></td>
+<td><button type="button" class="operator" data-value="-">-</button></td>
+</tr>
+<tr>
+<td><button type="button" class="number" data-value="1">1</button></td>
+<td><button type="button" class="number" data-value="2">2</button></td>
+<td><button type="button" class="number" data-value="3">3</button></td>
+<td><button type="button" class="operator" data-value="*">*</button></td>
+</tr>
+<tr>
+<td><button type="button" class="number" data-value="0">0</button></td>
+<td><button type="button" class="decimal" data-value=".">.</button></td>
+<td><button type="button" class="clear" data-value="AC">AC</button></td>
+<td><button type="button" class="equal" data-value="=">=</button></td>
+</tr>
+</table>
+</div>
+
+<script>
+/* JavaScript code */
+// JavaScript code
+const result = document.getElementById('result');
+const buttons = document.querySelectorAll('button');
+
+buttons.forEach(button => {
+  button.addEventListener('click', () => {
+    const value = button.dataset.value;
+
+    if (value === '=') {
+      // Evaluate the expression
+      result.value = eval(result.value);
+    } else if (value === 'AC') {
+      // Clear the screen
+      result.value = '';
+    } else {
+      // Append the value to the expression
+      result.value += value;
+    }
+  });
+});
+
+</script>
+</body>
+</html>
